@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphique des Températures</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div style="width: 75%; margin: auto;">
+        <canvas id="temperatureChart"></canvas>
+    </div>
+
+    <script>
+        // Données des températures par heure
+        const data = {
+            labels: [
+                '00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00',
+                '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00',
+                '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00'
+            ],
+            datasets: [{
+                label: 'Température (°C)',
+                data: [
+                    12.2, 12.0, 11.8, 11.6, 11.4, 11.3, 11.5, 12.3, 14.0, 16.4, 18.2, 19.4,
+                    20.1, 20.5, 20.8, 20.9, 20.7, 20.0, 19.0, 17.5, 16.0, 14.8, 14.0, 13.5
+                ],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1,
+                pointRadius: 5,
+                pointBackgroundColor: 'rgba(75, 192, 192, 1)'
+            }]
+        };
+
+        // Configuration du graphique
+        const config = {
+            type: 'scatter',
+            data: data,
+            options: {
+                scales: {
+                    x: {
+                        type: 'category',
+                        title: {
+                            display: true,
+                            text: 'Heure'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Température (°C)'
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Température par heure pour le 9 juin 2024'
+                    }
+                }
+            }
+        };
+
+        // Initialisation du graphique
+        const ctx = document.getElementById('temperatureChart').getContext('2d');
+        const temperatureChart = new Chart(ctx, config);
+    </script>
+</body>
+</html>
